@@ -1,42 +1,122 @@
-#root {
-  max-width: 1280px;
+.app {
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 44px 24px 84px;
+}
+
+.app-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 40px;
+  padding: 20px 24px;
+  border-radius: 26px;
+  background: #fffaf3;
+  box-shadow: 0 16px 34px rgba(24, 33, 28, 0.12);
+}
+
+.page-title {
+  font-family: "Fraunces", "Heebo", serif;
+  font-size: clamp(2.2rem, 4vw, 3.1rem);
+  margin: 0;
+  color: #1f352a;
+  letter-spacing: 0.2px;
+}
+
+.header-icon {
+  width: 72px;
+  height: 72px;
+}
+
+.flower-section {
+  margin-top: 26px;
+}
+
+.section-title {
+  margin: 20px 0 16px;
+  font-size: 1.2rem;
+  color: #2b3b35;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.flower-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.flower-card {
+  padding: 20px;
+  border-radius: 22px;
+  box-shadow: 0 18px 30px rgba(24, 33, 28, 0.16);
+  cursor: pointer;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  animation: card-rise 550ms ease both;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.flower-card:hover {
+  transform: translateY(-8px) rotate(-0.4deg);
+  box-shadow: 0 24px 40px rgba(24, 33, 28, 0.2);
 }
 
-@keyframes logo-spin {
+.flower-card::after {
+  content: "";
+  position: absolute;
+  inset: auto;
+  top: -40px;
+  right: -40px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.flower-name {
+  margin: 0 0 6px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.flower-details {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.flower-card:nth-child(2) {
+  animation-delay: 120ms;
+}
+
+.flower-card:nth-child(3) {
+  animation-delay: 240ms;
+}
+
+.flower-card:nth-child(4) {
+  animation-delay: 360ms;
+}
+
+@keyframes card-rise {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(18px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 640px) {
+  .app-header {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
